@@ -28,31 +28,137 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [{
-      "command": "handlebarsPreview.preview",
-      "title": "Handlebars: Open Preview"
-    }],
-    "keybindings": [{
-      "command": "handlebarsPreview.preview",
-      "key": "ctrl+p h",
-      "when": "!terminalFocus"
-    }]
+    "commands": [
+      {
+        "command": "handlebarsPreview.preview",
+        "title": "Handlebars: Open Preview"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "handlebarsPreview.preview",
+        "key": "ctrl+p h",
+        "when": "!terminalFocus"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Handlebars settings",
+        "properties": {
+          "handlebarsPreview.language": {
+            "type": "string",
+            "title": "Target language",
+            "default": "HTML",
+            "description": "The language to target in the preview"
+          },
+          "handlebarsPreview.codeHighlightOutputStyle": {
+            "title": "Code Output Style",
+            "type": "string",
+            "default": "vs",
+            "description": "The output style when syntax highlighting other code in the preview",
+            "enum": [ "solarized-dark",
+              "solarized-light",
+              "sunburst",
+              "tomorrow",
+              "tomorrow-night",
+              "tomorrow-night-blue",
+              "tomorrow-night-bright",
+              "tomorrow-night-eighties",
+              "vs",
+              "vs2015",
+              "xcode",
+              "xt256",
+              "zenburn",
+              "agate",
+              "androidstudio",
+              "arduino-light",
+              "arta",
+              "ascetic",
+              "atelier-cave-dark",
+              "atelier-cave-light",
+              "atelier-dune-dark",
+              "atelier-dune-light",
+              "atelier-estuary-dark",
+              "atelier-estuary-light",
+              "atelier-forest-dark",
+              "atelier-forest-light",
+              "atelier-heath-dark",
+              "atelier-heath-light",
+              "atelier-lakeside-dark",
+              "atelier-lakeside-light",
+              "atelier-plateau-dark",
+              "atelier-plateau-light",
+              "atelier-savanna-dark",
+              "atelier-savanna-light",
+              "atelier-seaside-dark",
+              "atelier-seaside-light",
+              "atelier-sulphurpool-dark",
+              "atelier-sulphurpool-light",
+              "atom-one-dark",
+              "atom-one-light",
+              "brown-paper",
+              "codepen-embed",
+              "color-brewer",
+              "darcula",
+              "dark",
+              "darkula",
+              "default",
+              "docco",
+              "dracula",
+              "far",
+              "foundation",
+              "github",
+              "github-gist",
+              "googlecode",
+              "grayscale",
+              "gruvbox-dark",
+              "gruvbox-light",
+              "hopscotch",
+              "hybrid",
+              "idea",
+              "ir-black",
+              "kimbie.dark",
+              "kimbie.light",
+              "magula",
+              "mono-blue",
+              "monokai",
+              "monokai-sublime",
+              "obsidian",
+              "ocean",
+              "paraiso-dark",
+              "paraiso-light",
+              "pojoaque",
+              "purebasic",
+              "qtcreator_dark",
+              "qtcreator_light",
+              "railscasts",
+              "rainbow",
+              "routeros",
+              "school-book"]
+          }
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
-    "compile": "copyfiles test/examples/*.* out/ && tsc -p ./",
+    "compile": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
+    "@types/handlebars": "^4.0.36",
+    "@types/markdown-it": "0.0.4",
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.40",
     "copyfiles": "^1.2.0",
     "mocha": "^2.3.3",
     "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
+    "vscode": "^1.1.10"
   },
   "dependencies": {
-    "handlebars": "^4.0.6"
+    "handlebars": "^4.0.6",
+    "markdown-it": "^8.4.0",
+    "markdown-it-highlightjs": "^3.0.0"
   }
 }

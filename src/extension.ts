@@ -1,7 +1,7 @@
 import {
     workspace, window, commands,
     ExtensionContext, TextEditorSelectionChangeEvent, TextDocumentChangeEvent
-} from "vscode";
+} from 'vscode';
 
 import PreviewContentProvider from './lib/PreviewContentProvider';
 import PREVIEW_URL from './lib/PREVIEW_URI';
@@ -9,7 +9,7 @@ import preview from './lib/preview';
 
 export function activate(context: ExtensionContext) {
 
-    let provider = new PreviewContentProvider();
+    let provider = new PreviewContentProvider(context);
 
     context.subscriptions.push(
         // Preview providers
